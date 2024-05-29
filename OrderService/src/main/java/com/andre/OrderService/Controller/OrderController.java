@@ -28,6 +28,11 @@ public class OrderController {
     public List<Order> getAll() {
         return orderService.getAll();
     }
+    
+    @PostMapping
+    public void insertOrder(@RequestBody Order order) {
+        orderService.insert(order);
+    }
 
     @GetMapping(path = "{id}")
     public Order getOrderById(@PathVariable("id") Long id) {
@@ -46,7 +51,8 @@ public class OrderController {
             @RequestParam(required = false) String status
             
             
-    ){
+    )
+    {
         orderService.update(id, jumlah, tangggal, status);
     }
             
